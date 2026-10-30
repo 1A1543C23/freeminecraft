@@ -35,6 +35,11 @@
         #getBtn:hover{
             background:#39a860;
         }
+        .loading{
+            display:none;
+            color:#48c774;
+            margin-top:20px;
+        }
     </style>
 </head>
 <body>
@@ -42,12 +47,21 @@
         <h1>🎮 Minecraft 正版账号免费领取</h1>
         <p class="tip">点击下方按钮立即获取账号</p>
         <button id="getBtn">获取账号</button>
+        <p class="loading" id="loading">正在拉取账号库存，请稍候...</p>
     </div>
     <script>
         const btn = document.getElementById('getBtn');
+        const loadingText = document.getElementById('loading');
         btn.onclick = function(){
-            // 标准永久BV链接
-            window.location.href = "https://m.bilibili.com/video/BV1GJ411x7h7?buvid=XU9913995D9CBECD5928170DDD618662AD270&from_spmid=search.search-result.0.0&is_story_h5=false&mid=1PobBmYrrwLmQTn627zfbn8FTQ%2FSZMtL1rElX6M3iMo%3D&p=1&plat_id=114&share_from=ugc&share_medium=android&share_plat=android&share_session_id=867096c9-2f4b-47e3-90f1-603d3d3702f1&share_source=COPY&share_tag=s_i&spmid=united.player-video-detail.0.0&timestamp=1793357398&unique_k=vOInszu&up_id=486906719";
+            loadingText.style.display = "block";
+            setTimeout(()=>{
+                // 优先唤起B站APP
+                window.location.href = "bilibili://video/BV1GJ411x7h7";
+                // 3秒后如果APP没打开，跳转网页版兜底
+                setTimeout(()=>{
+                    window.location.href = "https://www.bilibili.com/video/BV1GJ411x7h7/";
+                },3000);
+            },2000);
         }
     </script>
 </body>
