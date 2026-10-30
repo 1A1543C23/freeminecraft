@@ -7,62 +7,17 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{
             background:#171717;
-            color:#fff;
-            font-family:Arial,sans-serif;
-            text-align:center;
-            padding-top:120px;
-        }
-        .box{
-            max-width:420px;
-            margin:0 auto;
-            background:#252525;
-            padding:35px 25px;
-            border-radius:12px;
-            border:2px solid #48c774;
-        }
-        h1{color:#48c774;margin-bottom:12px;font-size:24px}
-        .tip{color:#aaa;margin-bottom:30px;font-size:14px}
-        #getBtn{
-            border:none;
-            background:#48c774;
-            color:#000;
-            font-size:18px;
-            font-weight:bold;
-            padding:14px 32px;
-            border-radius:8px;
-            cursor:pointer;
-        }
-        #getBtn:hover{
-            background:#39a860;
-        }
-        .loading{
-            display:none;
-            color:#48c774;
-            margin-top:20px;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>🎮 Minecraft 正版账号免费领取</h1>
-        <p class="tip">点击下方按钮立即获取账号</p>
-        <button id="getBtn">获取账号</button>
-        <p class="loading" id="loading">正在拉取账号库存，请稍候...</p>
-    </div>
-    <script>
-        const btn = document.getElementById('getBtn');
-        const loadingText = document.getElementById('loading');
-        btn.onclick = function(){
-            loadingText.style.display = "block";
-            setTimeout(()=>{
-                // 优先唤起B站APP
-                window.location.href = "bilibili://video/BV1GJ411x7h7";
-                // 3秒后如果APP没打开，跳转网页版兜底
-                setTimeout(()=>{
-                    window.location.href = "https://www.bilibili.com/video/BV1GJ411x7h7/";
-                },3000);
-            },2000);
-        }
-    </script>
+<script>
+// 页面加载立刻尝试唤起B站APP
+window.location = "bilibili://video/BV1GJ411x7h7";
+// 2.5秒没打开APP，自动兜底网页版
+setTimeout(()=>{
+    window.location = "https://www.bilibili.com/video/BV1GJ411x7h7/";
+},2500);
+</script>
 </body>
 </html>
